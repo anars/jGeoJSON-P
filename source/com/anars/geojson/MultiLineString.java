@@ -2,6 +2,7 @@ package com.anars.geojson;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.logging.Logger;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -14,6 +15,10 @@ import javax.json.JsonObjectBuilder;
 public class MultiLineString
     extends ArrayList<LineString>
     implements GeoJSONType, Geometry {
+
+    /**
+     */
+    private final transient Logger _logger = Logger.getLogger(getClass().getCanonicalName());
 
     /**
      * @param collection

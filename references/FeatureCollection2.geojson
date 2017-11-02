@@ -1,0 +1,51 @@
+{
+	"type": "FeatureCollection",
+	"features": [{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [100.0, 0.0]
+		},
+		"properties": {
+			"prop0": "value0",
+			"prop1": {
+				"a": "b",
+				"c": "d"
+			}
+		}
+	}, {
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [100.0, 0.0]
+		},
+		"properties": {
+
+
+
+			"prop0": "value0",
+			"prop1": 0.0
+		}
+	}, {
+		"type": "Feature",
+		"geometry": {
+			"type": "MultiLineString",
+			"coordinates": [
+				[
+					[170.0, 45.0],
+					[180.0, 45.0]
+				],
+				[
+					[-180.0, 45.0],
+					[-170.0, 45.0]
+				]
+			]
+		},
+		"properties": {
+			"prop0": "value0",
+			"prop1": {
+				"this": "that"
+			}
+		}
+	}]
+}

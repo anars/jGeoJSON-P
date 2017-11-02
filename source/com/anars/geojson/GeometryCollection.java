@@ -2,6 +2,7 @@ package com.anars.geojson;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.logging.Logger;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -13,6 +14,10 @@ import javax.json.JsonObjectBuilder;
 public class GeometryCollection
     extends ArrayList<Geometry>
     implements GeoJSONType {
+
+    /**
+     */
+    private final transient Logger _logger = Logger.getLogger(getClass().getCanonicalName());
 
     /**
      * @param collection

@@ -5,11 +5,17 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 
+import java.util.logging.Logger;
+
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 public class Processor {
+
+    /**
+     */
+    private final transient Logger _logger = Logger.getLogger(getClass().getCanonicalName());
 
     /**
      */
@@ -53,9 +59,10 @@ public class Processor {
             case "featurecollection":
                 return (new FeatureCollection(jsonObject));
             case "geometrycollection":
-                return (new FeatureCollection(jsonObject));
+                return (new GeometryCollection(jsonObject));
+            default:
+                throw new InvalidGeoJSONTypeException("Unknown GeoJSON type");
         }
-        return (null);
     }
 
     /**
