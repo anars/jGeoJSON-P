@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.JsonWriter;
 
 public class Processor {
 
@@ -86,10 +87,18 @@ public class Processor {
     /**
      * @param outputStream
      */
-    public void write(OutputStream outputStream, GeoJSONType geoJSONType) {}
+    public void write(OutputStream outputStream, GeoJSONType geoJSONType) {
+        JsonWriter jsonWriter = Json.createWriter(outputStream);
+        jsonWriter.writeObject(geoJSONType.toJSONObject());
+        jsonWriter.close();
+    }
 
     /**
      * @param writer
      */
-    public void write(Writer writer, GeoJSONType geoJSONType) {}
+    public void write(Writer writer, GeoJSONType geoJSONType) {
+        JsonWriter jsonWriter = Json.createWriter(writer);
+        jsonWriter.writeObject(geoJSONType.toJSONObject());
+        jsonWriter.close();
+    }
 }
