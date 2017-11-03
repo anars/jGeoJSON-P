@@ -3,6 +3,7 @@ package com.anars.geojson;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
+import java.io.StringReader;
 import java.io.Writer;
 
 import java.util.logging.Logger;
@@ -12,7 +13,7 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.json.JsonWriter;
 
-public class Processor {
+public class GeoJSON {
 
     /**
      */
@@ -20,24 +21,35 @@ public class Processor {
 
     /**
      */
-    private static final Processor INSTANCE = new Processor();
+    private static final GeoJSON INSTANCE = new GeoJSON();
 
     /**
      */
-    private Processor() {
+    private GeoJSON() {
         super();
     }
 
     /**
      * @return
      */
-    public static Processor getInstance() {
+    public static GeoJSON getInstance() {
         return INSTANCE;
+    }
+
+    /**
+     * @param string
+     * @return
+     * @throws InvalidGeoJSONTypeException
+     */
+    public GeoJSONType parse(String string)
+        throws InvalidGeoJSONTypeException {
+        return (read(Json.createReader(new StringReader(string))));
     }
 
     /**
      * @param jsonReader
      * @return
+     * @throws InvalidGeoJSONTypeException
      */
     public GeoJSONType read(JsonReader jsonReader)
         throws InvalidGeoJSONTypeException {
@@ -100,5 +112,37 @@ public class Processor {
         JsonWriter jsonWriter = Json.createWriter(writer);
         jsonWriter.writeObject(geoJSONType.toJSONObject());
         jsonWriter.close();
+    }
+
+    /**
+     * @param inputStream
+     * @return
+     */
+    public GeoJSONReader getReader(InputStream inputStream) {
+        return (new GeoJSONReader(inputStream));
+    }
+
+    /**
+     * @param reader
+     * @return
+     */
+    public GeoJSONReader getReader(Reader reader) {
+        return (new GeoJSONReader(reader));
+    }
+
+    /**
+     * @param outputStream
+     * @return
+     */
+    public GeoJSONWriter getWriter(OutputStream outputStream) {
+        return (new GeoJSONWriter(outputStream));
+    }
+
+    /**
+     * @param writer
+     * @return
+     */
+    public GeoJSONWriter getWriter(Writer writer) {
+        return (new GeoJSONWriter(writer));
     }
 }
