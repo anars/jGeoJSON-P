@@ -1,5 +1,6 @@
 package com.anars.geojson;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
@@ -118,7 +119,8 @@ public class GeoJSON {
      * @param inputStream
      * @return
      */
-    public GeoJSONReader getReader(InputStream inputStream) {
+    public GeoJSONReader getReader(InputStream inputStream)
+        throws IOException {
         return (new GeoJSONReader(inputStream));
     }
 
@@ -126,7 +128,8 @@ public class GeoJSON {
      * @param reader
      * @return
      */
-    public GeoJSONReader getReader(Reader reader) {
+    public GeoJSONReader getReader(Reader reader)
+        throws IOException {
         return (new GeoJSONReader(reader));
     }
 
